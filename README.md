@@ -22,9 +22,9 @@ A TypeScript study project to simulate a virus infecting in hospital patients
 - Então adicionar esta probabilidade de virus infectar
 
 
-Requisitos
+**Requisitos**
 
-Montar um conjunto de 2000 pacientes
-Com 10 patologias e taxas complicadas realistas
-Com um Virus chamado "CUZAOVID-29" taxa: 2%
-Gerar um relatório para essa entrada em print 
+- Montar um conjunto de 2000 pacientes
+- Com 10 patologias e taxas complicadas realistas
+- Com um Virus chamado "TSCRIPTVID-2020" taxa: 2%
+- Gerar um relatório para essa entrada em print 
