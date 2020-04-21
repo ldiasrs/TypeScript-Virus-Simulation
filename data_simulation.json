@@ -1,0 +1,38 @@
+{
+    "virus" : [
+        {
+            "name" : "TSCRIPTVID-2020",
+            "infectRatePercentage" : 0.2
+        }
+    ],
+
+    "patients" : [
+        {
+            "totalNumber" : 100,
+            "prefixName" : "Patient with 82 years old",
+            "age" : 82,
+            "diseases" : [
+                {
+                    "name" : "Diabetes",
+                    "complicationRatePercentage" : 0.2
+                }
+            ]
+        },
+        {
+            "totalNumber" : 50,
+            "prefixName" : "Patient with 56 years old",
+            "age" : 56,
+            "diseases" : [
+                {
+                    "name" : "Diabetes",
+                    "complicationRatePercentage" : 0.2
+                }
+            ]
+        },
+        {
+            "totalNumber" : 50,
+            "prefixName" : "Patient with 45 years old",
+            "age" : 45
+        }
+    ]
+}

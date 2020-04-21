@@ -1,0 +1,8 @@
+{
+    "patient_ages_risks" : [
+        {
+            "age" : 82,
+            "complicatingRiskPercentage" : 0.2
+        }
+    ]
+}

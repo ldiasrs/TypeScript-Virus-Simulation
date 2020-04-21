@@ -1,7 +1,7 @@
 import { HospitalDeClinicasEnvironment } from '../src/HospitalDeClinicasEnvironment';
 import { expect } from 'chai';
 import 'mocha';
-import { Patient } from '../src/Patient';
+import { Patient } from '../src/domain/Patient';
  
 describe('Given a Hospital', () => {
   let patientA = new Patient("John Snow A", 80);
