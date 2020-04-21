@@ -1,7 +1,8 @@
-import { Patient } from "./domain/Patient";
-import { Virus } from "./domain/Virus";
-import { HospitalEnvironment } from "./domain/HospitalEnvironment";
-import { infectPatient } from "./domain/InfectSimulation";
+import {Patient} from "./domain/Patient";
+import {Virus} from "./domain/Virus";
+import {HospitalEnvironment} from "./domain/HospitalEnvironment";
+import {infectPatient} from "./domain/InfectSimulation";
+
 export class HospitalDeClinicasEnvironment implements HospitalEnvironment {
   private _patients: Array<Patient> = [];
 
@@ -15,6 +16,10 @@ export class HospitalDeClinicasEnvironment implements HospitalEnvironment {
     });
   }
 
+  public addPatients(patients: Patient[]): HospitalEnvironment {
+    this._patients.concat(patients);
+    return this;
+  }
   public addPatient(patient: Patient): HospitalEnvironment {
     this._patients.push(patient);
     return this;

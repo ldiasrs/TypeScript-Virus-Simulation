@@ -4,9 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-   "start": "rm -rf dist && tsc && node dist/src/app.js",
-   "test": "mocha -r ts-node/register tests/**/*.test.ts",
-   "coverage": "nyc -r lcov -e .ts -x \"*.test.ts\" npm run test"
+    "start": "rm -rf dist && tsc && node dist/src/app.js",
+    "test": "mocha -r ts-node/register tests/**/*.test.ts",
+    "coverage": "nyc -r lcov -e .ts -x \"*.test.ts\" npm run test"
   },
   "author": "",
   "license": "ISC",

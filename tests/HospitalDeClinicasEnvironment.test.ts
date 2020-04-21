@@ -2,6 +2,7 @@ import { HospitalDeClinicasEnvironment } from '../src/HospitalDeClinicasEnvironm
 import { expect } from 'chai';
 import 'mocha';
 import { Patient } from '../src/domain/Patient';
+import {Virus} from "../src/domain/Virus";
  
 describe('Given a Hospital', () => {
   let patientA = new Patient("John Snow A", 80);
@@ -14,6 +15,10 @@ describe('Given a Hospital', () => {
       .addPatient(patientB)
       .addPatient(patientC);
     expect(hospital.allPatients().length).to.equal(3);
+  });
+  it('should infect with virus', () => {
+    let virus = new Virus("test", 0.2);
+    expect(hospital.infect(virus));
   });
  
 });

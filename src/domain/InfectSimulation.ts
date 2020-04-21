@@ -14,8 +14,8 @@ export function infectPatient(patient: Patient, virus: Virus) : boolean {
   } else if (patient.age > 80) {
     finalInfectionRate += 0.35;
   }
-  patient.deseases.forEach((desease) => {
-    finalInfectionRate += desease.complicatingRiskRate;
+  patient.deseases.forEach(disease => {
+    finalInfectionRate += disease.complicatingRiskRate;
   });
   return randomInfect(finalInfectionRate);
 }
