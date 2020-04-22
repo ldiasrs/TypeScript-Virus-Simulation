@@ -1,9 +1,9 @@
-import {Patient} from "./domain/Patient";
-import {Virus} from "./domain/Virus";
-import {HospitalEnvironment} from "./domain/HospitalEnvironment";
-import {infectPatient} from "./domain/InfectSimulation";
+import {Patient} from "./Patient";
+import {Virus} from "./Virus";
+import {HospitalEnvironment} from "./HospitalEnvironment";
+import {infectPatient} from "./InfectSimulation";
 
-export class HospitalDeClinicasEnvironment implements HospitalEnvironment {
+export class HospitalEnvironmentDefault implements HospitalEnvironment {
   private _patients: Array<Patient> = [];
 
   private _infectedPatients: Array<Patient | Virus> = [];

@@ -1,6 +1,6 @@
 import sinon from 'sinon';
 import * as infectPatient from "../src/domain/InfectSimulation";
-import { HospitalDeClinicasEnvironment } from '../src/HospitalDeClinicasEnvironment';
+import { HospitalEnvironmentDefault } from '../src/domain/HospitalEnvironmentDefault';
 import { expect } from 'chai';
 import 'mocha';
 import { Patient } from '../src/domain/Patient';
@@ -13,7 +13,7 @@ describe('Given a Hospital', () => {
   let patientC = new Patient("John Snow C", 82);
   let patients = [patientA, patientB, patientC];
   it('should add single patients', () => {
-    const hospital = new HospitalDeClinicasEnvironment();
+    const hospital = new HospitalEnvironmentDefault();
     hospital
         .addPatient(patientA)
         .addPatient(patientB)
@@ -21,12 +21,12 @@ describe('Given a Hospital', () => {
     expect(hospital.allPatients().length).to.equal(3);
   });
   it('should multiple single patients', () => {
-    const hospital = new HospitalDeClinicasEnvironment();
+    const hospital = new HospitalEnvironmentDefault();
     hospital.addPatients(patients)
     expect(hospital.allPatients().length).to.equal(3);
   });
   it('should infect with virus all the patients', () => {
-    const hospital = new HospitalDeClinicasEnvironment();
+    const hospital = new HospitalEnvironmentDefault();
     hospital.addPatients(patients)
     let virus = new Virus("test", 0.2);
     hospital.infect(virus)

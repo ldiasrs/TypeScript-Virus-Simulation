@@ -1,5 +1,5 @@
 
-import { HospitalDeClinicasEnvironment } from './HospitalDeClinicasEnvironment';
+import { HospitalEnvironmentDefault } from './domain/HospitalEnvironmentDefault';
 import {JSONDataSimulationLoader} from "./external/JSONDataSimulationLoader";
 const dataSimulation = new JSONDataSimulationLoader();
 
@@ -13,7 +13,7 @@ console.log("\n" +
 let patients = dataSimulation.loadPatients();
 console.log("* Number of patients: "  + patients.length)
 let virusList = dataSimulation.loadVirus();
-const hospital = new HospitalDeClinicasEnvironment();
+const hospital = new HospitalEnvironmentDefault();
 hospital.addPatients(patients);
 virusList.forEach(virus => {
     console.log("* Processing infecting virus: " + virus.name)
