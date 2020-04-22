@@ -17,7 +17,10 @@ export class HospitalDeClinicasEnvironment implements HospitalEnvironment {
   }
 
   public addPatients(patients: Patient[]): HospitalEnvironment {
-    this._patients.concat(patients);
+    //TODO concat did not worked this._patients.concat(patients);
+    patients.forEach(p => {
+      this.addPatient(p);
+    })
     return this;
   }
   public addPatient(patient: Patient): HospitalEnvironment {

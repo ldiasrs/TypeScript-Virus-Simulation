@@ -11,15 +11,23 @@ describe('Given a Hospital', () => {
   let patientA = new Patient("John Snow A", 80);
   let patientB = new Patient("John Snow B", 81);
   let patientC = new Patient("John Snow C", 82);
-  const hospital = new HospitalDeClinicasEnvironment();
-  hospital
-      .addPatient(patientA)
-      .addPatient(patientB)
-      .addPatient(patientC);
-  it('should add patients', () => {
+  let patients = [patientA, patientB, patientC];
+  it('should add single patients', () => {
+    const hospital = new HospitalDeClinicasEnvironment();
+    hospital
+        .addPatient(patientA)
+        .addPatient(patientB)
+        .addPatient(patientC);
+    expect(hospital.allPatients().length).to.equal(3);
+  });
+  it('should multiple single patients', () => {
+    const hospital = new HospitalDeClinicasEnvironment();
+    hospital.addPatients(patients)
     expect(hospital.allPatients().length).to.equal(3);
   });
   it('should infect with virus all the patients', () => {
+    const hospital = new HospitalDeClinicasEnvironment();
+    hospital.addPatients(patients)
     let virus = new Virus("test", 0.2);
     hospital.infect(virus)
     expect(stubInfect.calledWith(patientA, virus)).eq(true)
