@@ -6,7 +6,6 @@ import 'mocha';
 import { Patient } from '../src/domain/Patient';
 import {Virus} from "../src/domain/Virus";
 
-
 describe('Given a Hospital', () => {
   const stubInfect = sinon.stub(infectPatient, "infectPatient")
   let patientA = new Patient("John Snow A", 80);
@@ -26,5 +25,8 @@ describe('Given a Hospital', () => {
     expect(stubInfect.calledWith(patientA, virus)).eq(true)
     expect(stubInfect.calledWith(patientB, virus)).eq(true)
     expect(stubInfect.calledWith(patientC, virus)).eq(true)
+    expect(stubInfect.callCount).eq(3)
+    //restoring the stub to other testings work
+    stubInfect.restore();
   });
 });
