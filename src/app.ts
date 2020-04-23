@@ -1,6 +1,7 @@
 
 import { HospitalEnvironmentDefault } from './domain/HospitalEnvironmentDefault';
 import {JSONDataSimulationLoader} from "./external/JSONDataSimulationLoader";
+import {ReportInfectionAsString} from "./domain/ReportInfectionAsString";
 const dataSimulation = new JSONDataSimulationLoader();
 
 console.log("\n" +
@@ -11,13 +12,13 @@ console.log("\n" +
     "   \\___/   |__||__|  |____//____  > /_______  /|__|__|_|  /____/|____(____  /__| |__|\\____/|___|  /\n" +
     "                                \\/          \\/          \\/                \\/                    \\/ \n")
 let patients = dataSimulation.loadPatients();
-console.log("* Number of patients: "  + patients.length)
 let virusList = dataSimulation.loadVirus();
 const hospital = new HospitalEnvironmentDefault();
 hospital.addPatients(patients);
 virusList.forEach(virus => {
-    console.log("* Processing infecting virus: " + virus.name)
     hospital.infect(virus);
 });
-console.log("* Total infected patients: " + hospital.infectedPatients().length/2)
+
+console.log(new ReportInfectionAsString(hospital).buildReport())
 console.log("END")
+//TODO write documentation of how to use

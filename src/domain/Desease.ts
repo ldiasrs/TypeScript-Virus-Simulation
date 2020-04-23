@@ -1,7 +1,7 @@
 export class Desease {
 
-    private _name : string;
-    private _complicatingRiskRate : number;
+    private readonly _name : string;
+    private readonly _complicatingRiskRate : number;
 
 	constructor(name : string, complicatingRiskRate : number) {
         this._name = name;

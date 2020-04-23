@@ -1,30 +1,92 @@
 # TypeScript-Virus-Simulation
-A TypeScript study project to simulate a virus infecting in hospital patients
 
-- Criar uma classe Vírus que tem um nome e uma probabilidade de infecção (Ex: TSCRIPTVID-2020)
-- Criar uma classe Paciente que tem Nome, idade e uma lista de patologias (Ex: John Snow, 82)
-- Uma Doeça tem um nome e uma taxa de risco complicador (Diabetes, 8.8%)
-- Criar uma interface AmbienteHospitalar com os seguintes métodos
-- --- Adicionar paciente com suas patologias (Adiciona pacientes)
-- --- Gerar infecções recebendo um Virus como parâmetro (Define se um paciente será contaminado ou não)
-- Relatório de contaminação
-- Deve mostrar um relatório de todos os pacientes contaminados pelo virus em questão e suas patologias idades
-- Deve mostrar a taxa de contaminação geral
-- Criar uma implementação da interface AmbienteHospitalar chamada HospitalDeClinicas
-- Implementar gerar infecções com as seguintes características
-- Para cada paciente definir se será contaminado ou não
-- Exemplo de como funciona a contaminação:
-- Vírus "Gripe" probabilidade de infecção 43.9%
-- Então adicionar esta probabilidade de virus infectar
-- Se paciente maior que 70 anos adicionar 22.9%
-- Então adicionar esta probabilidade de virus infectar
-- Se paciente tiver Patologias exe: Turbeculose 5.8%
-- Então adicionar esta probabilidade de virus infectar
+A TypeScript study project to simulate patients virus infecting in hospital 
 
+## How to use
 
-**Requisitos**
+### 1) Prepare the input data
+- Edit data simulation input file (**_data_simulation.json_**)
+- Inform the types (age and prefix name) of patients
+- Inform how many should be created
+- Inform the diseases that the type will have
+- You can create how many types you wish
 
-- Montar um conjunto de 2000 pacientes
-- Com 10 patologias e taxas complicadas realistas
-- Com um Virus chamado "TSCRIPTVID-2020" taxa: 2%
-- Gerar um relatório para essa entrada em print 
+**Example:**
+
+```
+{
+    "virus" : [
+        {
+            "name" : "TSCRIPTVID-2020",
+            "infectRatePercentage" : 0.2
+        }
+    ],
+    "patients" : [
+        {
+            "totalNumber" : 100,
+            "prefixName" : "Patient with 82 years old",
+            "age" : 82,
+            "diseases" : [
+                {
+                    "name" : "Diabetes",
+                    "complicationRatePercentage" : 0.2
+                }
+            ]
+        },
+        {
+            "totalNumber" : 50,
+            "prefixName" : "Patient with 56 years old",
+            "age" : 56,
+            "diseases" : [
+                {
+                    "name" : "Diabetes",
+                    "complicationRatePercentage" : 0.2
+                }
+            ]
+        },
+        {
+            "totalNumber" : 50,
+            "prefixName" : "Patient with 45 years old",
+            "age" : 45
+        }
+    ]
+}
+```
+
+### 2) Run the simulation
+```
+npm start
+```
+**Output example:**
+```
+Simulation report of infection
+* Virus: {"_name":"TSCRIPTVID-2020","_infectionRate":0.2}
+* Total patients: 200
+* Not infected patients: 84 (42%)
+* Infected patients: 116 (57%)
+* ---- age > 70: 78 (67%)
+* ---- age < 70: 38 (32%)
+END
+
+```
+
+## Specification
+
+ Create a virus class with a name and a probability of infection (eg: TSCRIPTVID-2020)
+- Create a Patient class with name, age and a list of diseases (Ex: John Snow, 82)
+- A disease has a name and a complicating risk rate (eg: Diabetes, 8.8%)
+- Create a HospitalEnvironment interface with the following methods
+- --- Add patients with their diseases
+- --- Generate infections by receiving a virus as a parameter (Will define if the patients will be infected or not)
+- Must show a report of all patients infected by the virus
+- Must show general contamination rates
+- Create an implementation of the HospitalEnvironment interface called HospitalEnvironmentDefault
+- Implementation should have the following characteristics:
+- For each patient, define whether to be contaminated or not
+- Example of how contamination works:
+- "Flu" virus probability of infection 43.9%
+- Then add this probability of virus infection
+- If patient older than 70 years add 22.9%
+- Then add this probability of virus infection
+- If patient has diseases eg: Diabetes 5.8%
+- Then add this probability of virus infection

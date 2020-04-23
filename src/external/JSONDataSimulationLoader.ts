@@ -5,6 +5,7 @@ import { Patient } from '../domain/Patient';
 import { Desease } from '../domain/Desease';
 import { DataSimulationLoader } from '../domain/DataSimulationLoader';
 
+//TODO use a CDI(Context and Dependency Injection) JS framework to inject this
 export class JSONDataSimulationLoader implements DataSimulationLoader {
 
     private _virus : Virus[] = null;
@@ -27,20 +28,20 @@ export class JSONDataSimulationLoader implements DataSimulationLoader {
         this._patients = new Array<Patient>()
         dataSimulation.patients.forEach(patientConfig => {
             for (let index = 0; index < patientConfig.totalNumber; index++) {
-                this._patients.push(this.buildPatientWithDesease(patientConfig, index));
+                this._patients.push(this.buildPatientWithDisease(patientConfig, index));
             } 
         });
         return this._patients;
     }
 
-    private buildPatientWithDesease(patientConfig, index) : Patient {
-        var name =`${patientConfig.prefixName} [${index}]`;
-        var patient = new Patient(name, patientConfig.age);
+    private buildPatientWithDisease(patientConfig, index) : Patient {
+        const name = `${patientConfig.prefixName} [${index}]`;
+        const patient = new Patient(name, patientConfig.age);
         if (patientConfig.diseases != null) {
-            patientConfig.diseases.forEach(desease => {
+            patientConfig.diseases.forEach(disease => {
                 patient.addDesease(
-                    new Desease(desease.name,
-                        desease.complicationRatePercentage));
+                    new Desease(disease.name,
+                        disease.complicationRatePercentage));
             });
         }
         return patient;

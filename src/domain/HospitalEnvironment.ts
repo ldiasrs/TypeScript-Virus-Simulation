@@ -5,5 +5,5 @@ export interface HospitalEnvironment {
     addPatient(patient : Patient) : HospitalEnvironment;
     infect(virus : Virus);
     allPatients() : Array<Patient>;
-    infectedPatients(): Array<Patient|Virus>;
+    infectedPatients():  Map<Virus,Array<Patient>> ;
 }

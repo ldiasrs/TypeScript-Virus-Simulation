@@ -6,12 +6,13 @@ import {infectPatient} from "./InfectSimulation";
 export class HospitalEnvironmentDefault implements HospitalEnvironment {
   private _patients: Array<Patient> = [];
 
-  private _infectedPatients: Array<Patient | Virus> = [];
+  private _infectedPatients: Map<Virus,Array<Patient>> = new Map<Virus, Array<Patient>>();
 
   public infect(virus: Virus) {
+    this._infectedPatients.set(virus, new Array());
     this._patients.forEach((patient) => {
       if (infectPatient(patient, virus)) {
-        this._infectedPatients.push(patient, virus);
+        this._infectedPatients.get(virus).push(patient);
       }
     });
   }
@@ -32,7 +33,7 @@ export class HospitalEnvironmentDefault implements HospitalEnvironment {
     return this._patients;
   }
 
-  public infectedPatients(): Array<Patient | Virus> {
+  public infectedPatients():  Map<Virus,Array<Patient>>  {
     return this._infectedPatients;
   }
 }

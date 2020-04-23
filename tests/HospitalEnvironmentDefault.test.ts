@@ -7,11 +7,11 @@ import { Patient } from '../src/domain/Patient';
 import {Virus} from "../src/domain/Virus";
 
 describe('Given a Hospital', () => {
-  const stubInfect = sinon.stub(infectPatient, "infectPatient")
-  let patientA = new Patient("John Snow A", 80);
-  let patientB = new Patient("John Snow B", 81);
-  let patientC = new Patient("John Snow C", 82);
+  let patientA = new Patient("HE A", 80);
+  let patientB = new Patient("HE B", 81);
+  let patientC = new Patient("HE C", 82);
   let patients = [patientA, patientB, patientC];
+
   it('should add single patients', () => {
     const hospital = new HospitalEnvironmentDefault();
     hospital
@@ -20,12 +20,15 @@ describe('Given a Hospital', () => {
         .addPatient(patientC);
     expect(hospital.allPatients().length).to.equal(3);
   });
+
   it('should multiple single patients', () => {
     const hospital = new HospitalEnvironmentDefault();
     hospital.addPatients(patients)
     expect(hospital.allPatients().length).to.equal(3);
   });
+
   it('should infect with virus all the patients', () => {
+    const stubInfect = sinon.stub(infectPatient, "infectPatient")
     const hospital = new HospitalEnvironmentDefault();
     hospital.addPatients(patients)
     let virus = new Virus("test", 0.2);
@@ -37,4 +40,5 @@ describe('Given a Hospital', () => {
     //restoring the stub to other testings work
     stubInfect.restore();
   });
+
 });
