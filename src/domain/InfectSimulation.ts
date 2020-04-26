@@ -7,15 +7,24 @@ function randomInfect(rate: number) {
   return random < rateDecimal;
 }
 
-export function infectPatient(patient: Patient, virus: Virus) : boolean {
-  let finalInfectionRate = virus.infectionRate;
-  if (patient.age > 70 && patient.age <= 80) {
+function incrementInfectionRateByAge(age : number) {
+  let finalInfectionRate = 0;
+  if (age > 70 && age <= 80) {
     finalInfectionRate += 0.229;
-  } else if (patient.age > 80) {
+  } else if (age > 80) {
     finalInfectionRate += 0.35;
   }
+  return finalInfectionRate;
+}
+
+function infectPatient(patient: Patient, virus: Virus) : boolean {
+  let finalInfectionRate = virus.infectionRate;
+  finalInfectionRate += incrementInfectionRateByAge(patient.age);
   patient.deseases.forEach(disease => {
     finalInfectionRate += disease.complicatingRiskRate;
   });
   return randomInfect(finalInfectionRate);
 }
+
+export {infectPatient}
+export {incrementInfectionRateByAge}
